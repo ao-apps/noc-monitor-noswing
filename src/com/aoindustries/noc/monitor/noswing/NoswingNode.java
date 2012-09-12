@@ -21,6 +21,15 @@ import java.util.List;
  */
 public class NoswingNode implements Node {
 
+    @SuppressWarnings("unchecked")
+    static Node wrap(Node node) {
+        if(node instanceof SingleResultNode) return new NoswingSingleResultNode((SingleResultNode)node);
+        if(node instanceof TableResultNode) return new NoswingTableResultNode((TableResultNode)node);
+        if(node instanceof TableMultiResultNode) return new NoswingTableMultiResultNode((TableMultiResultNode)node);
+        if(node instanceof RootNode) return new NoswingRootNode((RootNode)node);
+        return new NoswingNode(node);
+    }
+
     final private Node wrapped;
 
     NoswingNode(Node wrapped) {
@@ -31,7 +40,7 @@ public class NoswingNode implements Node {
     @Override
     public Node getParent() throws RemoteException {
         NoswingMonitor.checkNoswing();
-        return new NoswingNode(wrapped.getParent());
+        return wrap(wrapped.getParent());
     }
 
     @Override
@@ -44,15 +53,6 @@ public class NoswingNode implements Node {
             localWrapped.add(wrap(child));
         }
         return Collections.unmodifiableList(localWrapped);
-    }
-
-    @SuppressWarnings("unchecked")
-    static Node wrap(Node node) {
-        if(node instanceof SingleResultNode) return new NoswingSingleResultNode((SingleResultNode)node);
-        if(node instanceof TableResultNode) return new NoswingTableResultNode((TableResultNode)node);
-        if(node instanceof TableMultiResultNode) return new NoswingTableMultiResultNode((TableMultiResultNode)node);
-        if(node instanceof RootNode) return new NoswingRootNode((RootNode)node);
-        return new NoswingNode(node);
     }
 
     @Override

@@ -8,7 +8,6 @@ package com.aoindustries.noc.monitor.noswing;
 import com.aoindustries.noc.monitor.common.Monitor;
 import com.aoindustries.noc.monitor.common.RootNode;
 import java.io.IOException;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.Locale;
@@ -25,8 +24,7 @@ public class NoswingMonitor implements Monitor {
 
     final private Monitor wrapped;
 
-    public NoswingMonitor(Monitor wrapped) throws RemoteException, NotBoundException {
-        checkNoswing();
+    public NoswingMonitor(Monitor wrapped) {
         this.wrapped = wrapped;
     }
 
