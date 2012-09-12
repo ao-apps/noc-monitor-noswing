@@ -29,6 +29,7 @@ public class NoswingMonitor extends WrappedMonitor {
      * One unique NoswingMonitor is created for each monitor (by identity equals).
      */
     public static NoswingMonitor getInstance(Monitor wrapped) throws RemoteException {
+        // Don't double-wrap
         if(wrapped instanceof NoswingMonitor) return (NoswingMonitor)wrapped;
         IdentityKey<Monitor> key = new IdentityKey<Monitor>(wrapped);
         synchronized(cache) {
