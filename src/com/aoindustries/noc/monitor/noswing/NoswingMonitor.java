@@ -5,8 +5,8 @@
  */
 package com.aoindustries.noc.monitor.noswing;
 
+import com.aoindustries.noc.monitor.callable.CallableMonitor;
 import com.aoindustries.noc.monitor.common.Monitor;
-import com.aoindustries.noc.monitor.wrapper.WrappedMonitor;
 import com.aoindustries.util.IdentityKey;
 import java.rmi.RemoteException;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ import javax.swing.SwingUtilities;
 /**
  * @author  AO Industries, Inc.
  */
-public class NoswingMonitor extends WrappedMonitor {
+public class NoswingMonitor extends CallableMonitor {
 
     static void checkNoswing() {
         if(SwingUtilities.isEventDispatchThread()) throw new AssertionError("Running in Swing event dispatch thread");
