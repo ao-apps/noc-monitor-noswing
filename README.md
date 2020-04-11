@@ -21,12 +21,12 @@
 	</a>
 </p>
 
-Ensures no [Monitoring API](https://aoindustries.com/noc-monitor-api/) calls performed on the Swing event dispatch thread.
+Ensures no [Monitoring API](https://github.com/aoindustries/noc-monitor-api) calls performed on the Swing event dispatch thread.
 
 ## Project Links
-* [Project Home](https://aoindustries.com/noc-monitor-noswing/)
-* [Changelog](https://aoindustries.com/noc-monitor-noswing/changelog)
-* [API Docs](https://aoindustries.com/noc-monitor-noswing/apidocs/)
+* [Project Home](https://aoindustries.com/noc/monitor/noswing/)
+* [Changelog](https://aoindustries.com/noc/monitor/noswing/changelog)
+* [API Docs](https://aoindustries.com/noc/monitor/noswing/apidocs/)
 * [Maven Central Repository](https://search.maven.org/artifact/com.aoindustries/noc-monitor-noswing)
 * [GitHub](https://github.com/aoindustries/noc-monitor-noswing)
 
