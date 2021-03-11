@@ -1,6 +1,6 @@
 /*
  * noc-monitor-noswing - Ensures no Monitoring API calls performed on the Swing event dispatch thread.
- * Copyright (C) 2012, 2020  AO Industries, Inc.
+ * Copyright (C) 2012, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public class NoswingMonitor extends CallableMonitor {
 		if(SwingUtilities.isEventDispatchThread()) throw new AssertionError("Running in Swing event dispatch thread");
 	}
 
-	private static final Map<IdentityKey<Monitor>,NoswingMonitor> cache = new HashMap<IdentityKey<Monitor>,NoswingMonitor>();
+	private static final Map<IdentityKey<Monitor>, NoswingMonitor> cache = new HashMap<>();
 
 	/**
 	 * One unique NoswingMonitor is created for each monitor (by identity equals).
