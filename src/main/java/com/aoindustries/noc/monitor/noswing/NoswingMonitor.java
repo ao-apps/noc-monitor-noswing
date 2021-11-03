@@ -48,7 +48,7 @@ public class NoswingMonitor extends CallableMonitor {
 	public static NoswingMonitor getInstance(Monitor wrapped) throws RemoteException {
 		// Don't double-wrap
 		if(wrapped instanceof NoswingMonitor) return (NoswingMonitor)wrapped;
-		IdentityKey<Monitor> key = new IdentityKey<Monitor>(wrapped);
+		IdentityKey<Monitor> key = new IdentityKey<>(wrapped);
 		synchronized(cache) {
 			NoswingMonitor server = cache.get(key);
 			if(server==null) {
