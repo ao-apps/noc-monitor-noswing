@@ -1,6 +1,6 @@
 /*
  * noc-monitor-noswing - Ensures no Monitoring API calls performed on the Swing event dispatch thread.
- * Copyright (C) 2012, 2020, 2021  AO Industries, Inc.
+ * Copyright (C) 2012, 2020, 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -20,6 +20,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with noc-monitor-noswing.  If not, see <https://www.gnu.org/licenses/>.
  */
+
 package com.aoindustries.noc.monitor.noswing;
 
 import com.aoindustries.noc.monitor.callable.CallableMonitor;
