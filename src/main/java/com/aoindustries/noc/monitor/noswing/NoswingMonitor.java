@@ -37,36 +37,40 @@ import javax.swing.SwingUtilities;
  */
 public class NoswingMonitor extends CallableMonitor {
 
-	static void checkNoswing() {
-		if(SwingUtilities.isEventDispatchThread()) throw new AssertionError("Running in Swing event dispatch thread");
-	}
+  static void checkNoswing() {
+    if (SwingUtilities.isEventDispatchThread()) {
+      throw new AssertionError("Running in Swing event dispatch thread");
+    }
+  }
 
-	private static final Map<IdentityKey<Monitor>, NoswingMonitor> cache = new HashMap<>();
+  private static final Map<IdentityKey<Monitor>, NoswingMonitor> cache = new HashMap<>();
 
-	/**
-	 * One unique NoswingMonitor is created for each monitor (by identity equals).
-	 */
-	public static NoswingMonitor getInstance(Monitor wrapped) throws RemoteException {
-		// Don't double-wrap
-		if(wrapped instanceof NoswingMonitor) return (NoswingMonitor)wrapped;
-		IdentityKey<Monitor> key = new IdentityKey<>(wrapped);
-		synchronized(cache) {
-			NoswingMonitor server = cache.get(key);
-			if(server==null) {
-				server = new NoswingMonitor(wrapped);
-				cache.put(key, server);
-			}
-			return server;
-		}
-	}
+  /**
+   * One unique NoswingMonitor is created for each monitor (by identity equals).
+   */
+  public static NoswingMonitor getInstance(Monitor wrapped) throws RemoteException {
+    // Don't double-wrap
+    if (wrapped instanceof NoswingMonitor) {
+      return (NoswingMonitor)wrapped;
+    }
+    IdentityKey<Monitor> key = new IdentityKey<>(wrapped);
+    synchronized (cache) {
+      NoswingMonitor server = cache.get(key);
+      if (server == null) {
+        server = new NoswingMonitor(wrapped);
+        cache.put(key, server);
+      }
+      return server;
+    }
+  }
 
-	private NoswingMonitor(Monitor wrapped) {
-		super(wrapped);
-	}
+  private NoswingMonitor(Monitor wrapped) {
+    super(wrapped);
+  }
 
-	@Override
-	protected <T> T call(Callable<T> callable, boolean allowRetry) throws RemoteException {
-		checkNoswing();
-		return super.call(callable, allowRetry);
-	}
+  @Override
+  protected <T> T call(Callable<T> callable, boolean allowRetry) throws RemoteException {
+    checkNoswing();
+    return super.call(callable, allowRetry);
+  }
 }
