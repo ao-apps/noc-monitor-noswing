@@ -13,7 +13,7 @@ Ensures no [Monitoring API](https://github.com/ao-apps/noc-monitor-api) calls pe
 * [Project Home](https://aoindustries.com/noc/monitor/noswing/)
 * [Changelog](https://aoindustries.com/noc/monitor/noswing/changelog)
 * [API Docs](https://aoindustries.com/noc/monitor/noswing/apidocs/)
-* [Maven Central Repository](https://central.sonatype.com/search?namespace=com.aoindustries&q=a%3Anoc-monitor-noswing)
+* [Maven Central Repository](https://central.sonatype.com/artifact/com.aoindustries/noc-monitor-noswing)
 * [GitHub](https://github.com/ao-apps/noc-monitor-noswing)
 
 ## Contact Us
